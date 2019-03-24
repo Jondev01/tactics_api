@@ -1,11 +1,15 @@
 let express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mysql = require('mysql');
 
-//connect to mongoose
-mongoose.connect('mongodb://localhost/tactics_api');
-let db = mongoose.connection;
+//connect to db
+let db = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'ThisIsThePassword',
+    database : 'chess_tactics'
+  });
 app.get('/', (req, res) => {
     res.send('Please use /api/tactics!');
 });
