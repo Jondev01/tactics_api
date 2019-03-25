@@ -1,0 +1,19 @@
+const express = require('express'),
+  bodyParser = require('body-parser'),
+  mysql = require('mysql'); 
+const app = express();
+
+//connect to db
+const db = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'ThisIsThePassword',
+  database : 'chess_tactics'
+});
+  db.connect();
+app.get('/', (req, res) => {
+  res.send('Please use /api/tactics!');
+});
+app.listen(3000, () => {
+  console.log('Listening on port 3000...');
+});
