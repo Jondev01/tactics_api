@@ -1,5 +1,6 @@
 <template>
   <div :class="['Square', type]">
+     a
   </div>
 </template>
 
@@ -15,13 +16,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .Square {
-  width: 30px;
-  height: 30px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 12.5%;
+  height: 12.5%;
 }
   .dark {
     background-color: black;
   }
   .light {
-    background-color: white;
+    background-color: #ccc;
   }
 </style>
