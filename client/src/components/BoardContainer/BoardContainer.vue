@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Board from './Board/Board.vue';
+import * as util from '../../util/pieces.js';
 
 export default {
   name: 'Board',
@@ -16,14 +16,14 @@ export default {
   },
 
   components: {
-      Board
   },
   methods: {
 
   },
-
   created() {
-      return
+      /* eslint-disable no-console */
+      console.log(util.fenToArray());
+      /* eslint-enable no-console */
   }
 }
 </script>

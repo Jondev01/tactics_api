@@ -1,6 +1,6 @@
 <template>
   <div class="Board">
-          <Square v-for="(square, i) in squares" v-bind:key="i" :type="getType(i)" :piece="position[i]"/>
+          <Square v-for="(square, i) in squares" v-bind:key="i" :type="getType(i)"/>
   </div>
 </template>
 
