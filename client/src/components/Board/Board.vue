@@ -1,6 +1,6 @@
 <template>
   <div class="Board">
-          <Square v-for="(square, i) in squares" v-bind:key="i" :type="getType(i)" />
+          <Square v-for="(square, i) in squares" v-bind:key="i" :type="getType(i)" :piece="position[i]"/>
   </div>
 </template>
 
@@ -9,10 +9,13 @@ import Square from './Square/Square.vue';
 
 export default {
   name: 'Board',
-  data: () => {
+  data() {
     return {
         squares: Array(64).fill(0)
     }
+  },
+  props: {
+    position: Array
   },
   components: {
       Square
