@@ -53,7 +53,7 @@ export class Rook {
                 case 1 : return [1,0];
                 case 2 : return [0,-1];
                 case 3 : return [-1, 0]; 
-            };
+            }
         }
         let dir = testDir();
         while( !this.stepIsLegal(dir) ) {
@@ -141,7 +141,7 @@ export class Knight {
                 case 5 : return [2, -1];
                 case 6 : return [-2, -1];
                 case 7 : return [-1, -2];
-            };
+            }
         };
         let dir = testDir();
         while(!this.stepIsLegal(dir))
@@ -171,7 +171,7 @@ export class Knight {
             square = this.square
         return  !(square%8+dir[0] >=8 || square%8+dir[0] < 0 || square/8 + dir[1] < 0 || square/8 + dir[1] >=8);
     }
-};
+}
 
 export const intToSquare = (square) => {
     return 'abcdefgh'.split('')[square%8]+`${7-Math.floor(square/8)+1}`;
@@ -180,11 +180,10 @@ export const intToSquare = (square) => {
 export const squareToInt = (square) => {
     if(square == '-')
         return -1;
-    return (7-parseInt(square[1]))*8 + (square.charCodeAt(0) - "a".charCodeAt(0));
+    return (8-parseInt(square[1]))*8 + (square.charCodeAt(0) - "a".charCodeAt(0));
 }
 
-export const fenToArray(fen) {
-    fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -";
+export const fenToArray = (fen = "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3") => {
     let position = Array(64).fill(0);
     let index = 0, i=0, j=0;
     let whiteToMove = null, enPassant = null;
@@ -196,18 +195,21 @@ export const fenToArray(fen) {
     };
     while(index < fen.length) {
         let char = fen[index];
-        if(i<8 && j<8) {
-            if(j>=8) {
+        if(i<8 || j<8) {
+            if(j>=8)
                 j = 0;
-                ++i;
+            if(char == ' ') {
+                i=8;
+                j=8;
             }
-            if(char == '/')
-                j = 8;
+            else if(char == '/')
+                ++i;
             else if(char >= '0' && char <= '8') {
                 j += parseInt(char);
             }
             else {
                 position[i*8+j] = char;
+                ++j;
             }
         }
         else {
@@ -228,6 +230,6 @@ export const fenToArray(fen) {
         position: position,
         whiteToMove: whiteToMove,
         castlingRights: castlingRights,
-        enPassant: enPassant;
+        enPassant: enPassant
     }
 }
