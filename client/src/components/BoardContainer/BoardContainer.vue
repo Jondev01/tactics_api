@@ -1,21 +1,23 @@
 <template>
   <div class="BoardContainer">
-          
+    <Board :position="position"/>
   </div>
 </template>
 
 <script>
 import * as util from '../../util/pieces.js';
+import Board from '../Board/Board.vue';
 
 export default {
-  name: 'Board',
+  name: 'BoardContainer',
   data() {
     return {
-        position: []
+        position: util.fenToArray()
     }
   },
 
   components: {
+    Board
   },
   methods: {
 

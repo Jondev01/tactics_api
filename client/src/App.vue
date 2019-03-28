@@ -2,21 +2,18 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Board />
     <BoardContainer />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-import Board from './components/Board/Board.vue';
 import BoardContainer from './components/BoardContainer/BoardContainer.vue';
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    Board,
     BoardContainer
   }
 }
