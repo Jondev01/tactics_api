@@ -12,6 +12,13 @@ const db = mysql.createConnection({
 });
   db.connect();
 app.get('/', (req, res) => {
+  res.send('Please use /api/tactic!');
+});
+app.get('/api/tactics', (req, res) => {
+  db.query('SELECT * FROM positions', function (err, rows, fields) {
+    if (err) throw err
+    console.log('The solution is: ', rows[0].FEN);
+  });
   res.send('Please use /api/tactics!');
 });
 app.listen(3000, () => {
