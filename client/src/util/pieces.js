@@ -183,7 +183,7 @@ export const squareToInt = (square) => {
     return (8-parseInt(square[1]))*8 + (square.charCodeAt(0) - "a".charCodeAt(0));
 }
 
-export const fenToArray = (fen = "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3") => {
+export const fenToArray = (fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -") => {
     let position = Array(64).fill(0);
     let index = 0, i=0, j=0;
     let whiteToMove = null, enPassant = null;
