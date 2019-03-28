@@ -31,5 +31,6 @@ export default {
     .Board{
         width: 320px;
         height: 320px;
+        user-select: none;
     }
 </style>
